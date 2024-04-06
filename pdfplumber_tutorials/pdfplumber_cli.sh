@@ -1,2 +1,0 @@
-curl "https://raw.githubusercontent.com/jsvine/pdfplumber/stable/examples/pdfs/background-checks.pdf" > DataSets/background-checks.pdf
-pdfplumber < DataSets/background-checks.pdf > DataSets/background-checks.csv
