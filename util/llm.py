@@ -1,7 +1,6 @@
 import json
 import requests
 
-
 def chat(messages, model='tinydolphin', verbose=False):
     """Sends messages to a chat API and returns the response."""
     response = requests.post(

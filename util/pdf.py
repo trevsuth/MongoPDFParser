@@ -1,9 +1,7 @@
 import pdfplumber
-import os
 from io import BytesIO
-from dotenv import load_dotenv
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
+#from dotenv import load_dotenv
+from util.mongo import MongoDBHandler
 import base64
 
 def get_text(pdf_page):
@@ -57,18 +55,7 @@ def parse_pdf(file_path):
                 "num_tables": get_tables(page)[0],
                 "tables": get_tables(page)[1], 
             })
-
-    # Environment variables for MongoDB connection
-    load_dotenv()
-    uri = os.getenv('MONGO_CONNECTION_STRING')
-    client = MongoClient(uri, server_api=ServerApi('1'))
-    db = client['pdf']
-    collection = db.sample_pdf
-
-    # Insert parsed data into MongoDB
-    if pages_data:
-        collection.insert_many(pages_data)
-
-# File path for the PDF to be parsed
-# file_path = 'DataSets/technical-pb-mini-split-inverter-60hz-4myw15-sn-07092021.pdf'
-# parse_pdf(file_path)
+    
+    # Instantiate MongoDB handler and insert data
+    mongo_handler = MongoDBHandler()
+    mongo_handler.insert_data(pages_data)
