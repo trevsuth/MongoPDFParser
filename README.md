@@ -6,7 +6,7 @@
 1. Create a Mongo database called ```pdf``` and inside that a collection called ```sample_pdf```
 1. Rename env.environment to .env and insert your Atlas collection string
 1. Install all required python libraries using ```pip install -r requirements.txt```
-1. Run ```pdf_to_mongo.py```
+1. Run ```main.py```
 1. This will save the contents so the technical manual to the Altas instance
 
 ## TODO
